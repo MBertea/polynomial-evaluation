@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Cell from "./Cell";
 
-const coeffs = [1,2,1]
+const coeffs = [4, 5, 3, 2, 1]
 
 const PageHolder = styled.div`
     height: 100vh;
@@ -10,7 +10,7 @@ const PageHolder = styled.div`
     display flex;
     flex-direction: column;
     align-items: center;
-    background-color: yellow;
+    // background-color: yellow;
     justify-content: space-evenly;
 `;
 
