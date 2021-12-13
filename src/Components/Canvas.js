@@ -10,7 +10,6 @@ const PageHolder = styled.div`
     display flex;
     flex-direction: column;
     align-items: center;
-    // background-color: yellow;
     justify-content: space-evenly;
 `;
 
@@ -40,6 +39,9 @@ const Canvas = () => {
 
     const handleClickAdvance = () => {
         let valObjCpy = [...valObjects];
+        if (valObjects[valObjects.length - 1].pprim !== '') {
+            setOutput([...output, valObjects[valObjects.length - 1].pprim]);
+        }
         for (let i = valObjects.length-2; i >= 0; i--) {
             if (valObjCpy[i].p === '') {
                 valObjCpy[i+1].p = '';
@@ -54,9 +56,7 @@ const Canvas = () => {
             valObjCpy[i+1].p = valObjCpy[i].pprim;
             valObjCpy[i+1].pprim = valObjCpy[i].x === '' ? '' : valObjCpy[i].pprim * valObjCpy[i].x + coeffs[i+1];
         }
-        if (valObjects[valObjects.length - 1].pprim !== '') {
-            setOutput([...output, valObjects[valObjects.length - 1].pprim]);
-        }
+
         if (input.length !== 0) {
             let newX = input[input.length-1];
             valObjCpy[0].x = newX;
@@ -82,7 +82,7 @@ const Canvas = () => {
                 <div>
                     <h5>Inputs</h5>
                     <br></br>
-                    {input}
+                    {input.map(element => element + ", ")}
                 </div>
                 <div>
                     <h5>Output</h5>
